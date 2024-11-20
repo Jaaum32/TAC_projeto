@@ -1,4 +1,4 @@
-package br.edu.utfpr.api.models;
+package br.edu.utfpr.api.model;
 
 import java.util.ArrayList;
 import java.util.List;

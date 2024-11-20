@@ -1,4 +1,4 @@
-package br.edu.utfpr.api.controllers;
+package br.edu.utfpr.api.controller;
 
 public class ReproductionController {
 

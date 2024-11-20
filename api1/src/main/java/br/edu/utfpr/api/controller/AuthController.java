@@ -1,4 +1,4 @@
-package br.edu.utfpr.api.controllers;
+package br.edu.utfpr.api.controller;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -21,14 +21,14 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.utfpr.api.dtos.AuthDTO;
-import br.edu.utfpr.api.models.User;
-// import br.edu.utfpr.todo.dto.Message;
+import br.edu.utfpr.api.dto.AuthDTO;
+import br.edu.utfpr.api.dto.Message;
+import br.edu.utfpr.api.model.Person;
 import br.edu.utfpr.api.security.JwtUtil;
-// import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-// @Tag(name = "Auth", description = "Authentication resource endpoints.")
+@Tag(name = "Auth", description = "Authentication resource endpoints.")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -58,12 +58,11 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(auth);
 
             // Dados do usuário autenticado
-            var user = (User) auth.getPrincipal();
+            var user = (Person) auth.getPrincipal();
 
             // Carga (dados) para incluir no Token
             var claims = new HashMap<String, Object>();
-            claims.put("id", claims.put("id", Integer.toString(user.getId()))); //user.getId().toString());
-            
+            claims.put("id", user.getId().toString());
             claims.put("username", body.getUsername());
 
             // var now1 = LocalDateTime.now(ZoneId.of("UTC"));
@@ -81,7 +80,7 @@ public class AuthController {
             return ResponseEntity.ok(res);
         } catch (BadCredentialsException ex) {
             ex.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(/*Message.b("Invalid credentials"*/"Deu ruim dms");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.b("Invalid credentials"));
         }
     }
 }
