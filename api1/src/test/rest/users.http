@@ -1,0 +1,40 @@
+### Criar um novo usuário
+POST http://localhost:8080/user
+Content-Type: application/json
+Authorization: Basic user a773ce31-b8b1-48bb-a32b-521abd1f6365
+
+{
+  "name": "João Silva",
+  "email": "joao.silva@example.com",
+  "password": "senha123",
+  "role": "USER"
+}
+###
+
+### Obter um usuário pelo ID
+GET http://localhost:8080/user/1
+
+###
+
+### Obter todos os usuários (paginação)
+GET http://localhost:8080/user?page=0&size=5&sort=name,asc
+Authorization: Basic user a773ce31-b8b1-48bb-a32b-521abd1f6365
+###
+
+### Atualizar um usuário pelo ID
+PUT http://localhost:8080/user/1
+Content-Type: application/json
+
+{
+  "name": "João Silva Atualizado",
+  "email": "joao.silva.atualizado@example.com",
+  "password": "novaSenha123",
+  "role": "ADMIN"
+}
+
+###
+
+### Deletar um usuário pelo ID
+DELETE http://localhost:8080/user/1
+
+###

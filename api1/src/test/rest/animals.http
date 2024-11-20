@@ -1,0 +1,46 @@
+### Criar um novo animal
+POST http://localhost:8080/animals
+Content-Type: application/json
+Authorization: Basic user a773ce31-b8b1-48bb-a32b-521abd1f6365
+
+{
+  "tagId": "TAG12345",
+  "name": "Rex",
+  "breed": "Labrador",
+  "age": 5,
+  "weight": 30.5,
+  "reproductiveStatus": "Neutered"
+}
+
+###
+
+### Obter um animal pelo ID
+GET http://localhost:8080/animals/1
+Authorization: e09e07c7-2032-45f0-8910-153ef84d8bd5
+
+###
+
+### Obter todos os animais (paginação)
+GET http://localhost:8080/animals?page=0&size=5&sort=name,asc
+Authorization: Basic user a773ce31-b8b1-48bb-a32b-521abd1f6365
+###
+
+### Atualizar um animal pelo ID
+PUT http://localhost:8080/animals/1
+Content-Type: application/json
+
+{
+  "tagId": "TAG12345",
+  "name": "Rex Atualizado",
+  "breed": "Golden Retriever",
+  "age": 6,
+  "weight": 32.0,
+  "reproductiveStatus": "Neutered"
+}
+ 
+###
+
+### Deletar um animal pelo ID
+DELETE http://localhost:8080/animals/1
+
+###
