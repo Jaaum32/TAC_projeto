@@ -12,6 +12,7 @@ public class ReproductionDTO {
     @NotNull(message = "Insemination date is mandatory")
     private Date inseminationDate;
 
+    @SuppressWarnings("unused")
     private Date expectedBirthDate;
 
     @Size(max = 255, message = "Observations cannot exceed 255 characters")

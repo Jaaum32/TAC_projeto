@@ -9,9 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.edu.utfpr.api.dto.AnimalDTO;
 import br.edu.utfpr.api.dto.ReproductionDTO;
-import br.edu.utfpr.api.model.Animal;
 import br.edu.utfpr.api.model.Reproduction;
 import br.edu.utfpr.api.repository.ReproductionRepository;
 import jakarta.validation.Valid;
@@ -27,16 +25,10 @@ public class ReproductionController {
     public Reproduction create(@RequestBody @Valid ReproductionDTO dto) {
         var reproduction = new Reproduction();
         BeanUtils.copyProperties(dto, reproduction);
-        reproductionRepository.save(reproduction);
-        return reproduction;
+        return reproductionRepository.save(reproduction);
     }
 
-    @PostMapping
-    public Reproduction create(@RequestBody @Valid Reproduction reproduction) {
-        reproductionRepository.save(reproduction);
-        System.out.println(reproduction);
-        return reproduction;
-    }
+    
 
     @GetMapping("{id}")
     public ResponseEntity<Object> get(@PathVariable int id) {
