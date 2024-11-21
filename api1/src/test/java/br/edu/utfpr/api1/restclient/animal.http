@@ -1,0 +1,39 @@
+@URL = http://localhost:8080/animal
+
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjIzZTM0MjJhLTI5MGItNDA0Ny1hNzllLTYyY2IwMzhjOTUxMiIsInVzZXJuYW1lIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNzMyMTUzNTk2LCJleHAiOjE3MzIxNTcxOTYsImlzcyI6IlVURlBSIn0.jfGZYCv19ldjxs0wrdJdZ78sq_76JFCIYngkYDcAOJc
+### Obter todas pessoas
+GET {{URL}}
+Authorization: {{token}}
+
+### inserir 
+POST {{URL}}
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "tagId": "A1234567",
+    "name": "Bobby",
+    "breed": "Labrador",
+    "age": 5,
+    "weight": 25.5,
+    "reproductiveStatus": "Male"
+}
+
+### atualizar
+PUT {{URL}}/1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "tagId": "A67890",
+    "name": "Max",
+    "breed": "Golden Retriever",
+    "age": 6,
+    "weight": 30.0,
+    "reproductiveStatus": "Male"
+}
+
+
+### deletar
+DELETE {{URL}}/1
+Authorization: {{token}}

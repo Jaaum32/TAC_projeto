@@ -1,7 +1,6 @@
 @URL = http://localhost:8080/person
 
-@token = Bearer 
-
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjcyZTQyN2M1LTc5MzUtNGQ1YS1hNTI1LWJhMjJkMDMyNWEwNSIsInVzZXJuYW1lIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNzMyMTUzMTkyLCJleHAiOjE3MzIxNTY3OTIsImlzcyI6IlVURlBSIn0.1I5PJGG5T5gt-uAJOGgW7iRvsJNLV9ctfBMajSurkIQ
 
 ### Obter todas pessoas
 GET {{URL}}
@@ -14,6 +13,7 @@ Authorization: {{token}}
 ### Criar uma pessoa
 POST {{URL}}
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "name": "Juca",
