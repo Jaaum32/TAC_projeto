@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import br.edu.utfpr.api.dto.HealthRecordDTO;
 import br.edu.utfpr.api.model.HealthRecord;
 import br.edu.utfpr.api.repository.HealthRecordRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/healthrecord")
+@Tag(name = "Health Record", description = "Authentication resource endpoints.")
 public class HealthRecordController {
 
     @Autowired
@@ -28,7 +30,7 @@ public class HealthRecordController {
         return healthRecordRepository.save(healthRecord);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> get(@PathVariable int id) {
         var healthRecordOpt = healthRecordRepository.findById(id);
 
@@ -43,7 +45,7 @@ public class HealthRecordController {
         return ResponseEntity.status(206).body(healthRecordRepository.findAll(pageable));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> put(@PathVariable int id, @Valid @RequestBody HealthRecordDTO dto) {
         var healthRecordOpt = healthRecordRepository.findById(id);
 
@@ -64,7 +66,7 @@ public class HealthRecordController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         var healthRecordOpt = healthRecordRepository.findById(id);
 

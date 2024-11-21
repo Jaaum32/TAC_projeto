@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import br.edu.utfpr.api.dto.AnimalDTO;
 import br.edu.utfpr.api.model.Animal;
 import br.edu.utfpr.api.repository.AnimalRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/animal")
+@Tag(name = "Animal", description = "Authentication resource endpoints.")
 public class AnimalController {
 
     @Autowired
@@ -28,7 +30,7 @@ public class AnimalController {
         return animalRepository.save(animal);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> get(@PathVariable int id) {
         var animalOpt = animalRepository.findById(id);
 
@@ -43,7 +45,7 @@ public class AnimalController {
         return ResponseEntity.status(206).body(animalRepository.findAll(pageable));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> put(@PathVariable int id, @Valid @RequestBody AnimalDTO dto) {
         var animalOpt = animalRepository.findById(id);
 
@@ -64,7 +66,7 @@ public class AnimalController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         var animalOpt = animalRepository.findById(id);
 

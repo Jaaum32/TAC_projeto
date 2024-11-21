@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import br.edu.utfpr.api.dto.ReproductionDTO;
 import br.edu.utfpr.api.model.Reproduction;
 import br.edu.utfpr.api.repository.ReproductionRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/reproduction")
+@Tag(name = "Reproduction", description = "Authentication resource endpoints.")
 public class ReproductionController {
 
     @Autowired
@@ -30,7 +32,7 @@ public class ReproductionController {
 
     
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> get(@PathVariable int id) {
         var reproductionOpt = reproductionRepository.findById(id);
 
@@ -45,7 +47,7 @@ public class ReproductionController {
         return ResponseEntity.status(206).body(reproductionRepository.findAll(pageable));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> put(@PathVariable int id, @Valid @RequestBody ReproductionDTO dto) {
         var reproductionOpt = reproductionRepository.findById(id);
 
@@ -66,7 +68,7 @@ public class ReproductionController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         var reproductionOpt = reproductionRepository.findById(id);
 
